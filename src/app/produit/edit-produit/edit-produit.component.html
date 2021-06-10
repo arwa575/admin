@@ -1,0 +1,90 @@
+<div class="row layout-top-spacing">
+    <div class="row">
+        <div id="tooltips" class="col-lg-12 layout-spacing col-md-12">
+            <div class="statbox widget box box-shadow">
+                <div class="widget-header">
+                    <div class="row">
+                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                            <h4>Tooltips</h4>
+                        </div>                 
+                    </div>
+                </div>
+                <div class="widget-content widget-content-area">
+                    <form [formGroup]="editForm" (ngSubmit)="add()" novalidate>
+                        <div class="col-md-12 mb-3">
+                                <label>Image</label>
+                                <input class="form-control" (change)="upload(f,img)" type="file" #f />
+                                <input type="hidden" formControlName="image" #img>
+                                <!-- Showing errors using getter method -->
+                        </div>        
+                        <div class="col-md-12 mb-3">
+                            <label>nom</label>
+                            <input type="text" placeholder="Enter name of the Product" formControlName="nom" class="form-control" required>
+                            <!-- Showing errors using getter method -->
+                            <p *ngIf="editForm.get('nom').touched && editForm.get('nom').invalid" class="error">
+                            <sup>*</sup>Please enter firstname
+                            </p>
+                            <p *ngIf="editForm.get('nom').errors?.minlength" class="error">
+                            <sup>*</sup>Le nom ne doit pas être inférieur à 4 lettress
+                            </p>   
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label>categorie</label>
+                            <select formControlName="categorie" id="">
+                                <option value="{{categorie.uid}}" *ngFor="let categorie of categories">{{categorie.nom}}</option>
+                            </select>
+                            <!-- Showing errors using getter method -->
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label>marque</label>
+                            <input type="text" placeholder="Enter name of the Product" formControlName="marque" class="form-control" required>
+                            <!-- Showing errors using getter method -->
+                                <p *ngIf="editForm.get('marque').touched && editForm.get('marque').invalid" class="error">
+                                <sup>*</sup>Please enter firstname
+                                </p>
+                                <p *ngIf="editForm.get('marque').errors?.minlength" class="error">
+                                <sup>*</sup>Le nom ne doit pas être inférieur à 4 lettress
+                                </p>   
+                        </div>
+                        <div class="col-md-12 mb-3">
+                        <label>description</label>
+                        <input type="text" placeholder="Enter name of the Product" formControlName="description" class="form-control" required  >
+                        <!-- Showing errors using getter method -->
+                        <p *ngIf="editForm.get('description').touched && editForm.get('description').invalid" class="error">
+                            <sup>*</sup>Please enter firstname
+                            </p>
+                            <p *ngIf="editForm.get('description').errors?.minlength" class="error">
+                            <sup>*</sup>La description ne doit pas être inférieur à 20 lettres
+                            </p>   
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label>prix</label>
+                            <input type="number" placeholder="Enter name of the Product" formControlName="prix" min="0" class="form-control" required>
+                            <!-- Showing errors using getter method -->
+                                <p *ngIf="editForm.get('prix').touched && editForm.get('prix').invalid" class="error">
+                                <sup>*</sup>Please enter firstname
+                                </p>
+                                <p *ngIf="editForm.get('prix').errors?.minlength" class="error">
+                                <sup>*</sup>Le nom ne doit pas être inférieur à 4 lettress
+                                </p>   
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label>quantite</label>
+                            <input type="number" placeholder="Enter name of the Product" formControlName="quantite" min="1" class="form-control" required>
+                            <!-- Showing errors using getter method -->
+                                <p *ngIf="editForm.get('quantite').touched && editForm.get('quantite').invalid" class="error">
+                                <sup>*</sup>Please enter firstname
+                                </p>
+                                <p *ngIf="editForm.get('quantite').errors?.minlength" class="error">
+                                <sup>*</sup>Le nom ne doit pas être inférieur à 4 lettress
+                                </p>   
+                        </div>
+                        <button type="submit" class="btn btn-success btn-block" [disabled]="!editForm.valid">
+                                Modifier
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    

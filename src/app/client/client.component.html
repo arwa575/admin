@@ -1,0 +1,34 @@
+<div class="row layout-top-spacing" id="cancel-row">
+                
+    <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+        <div class="widget-content widget-content-area br-6">
+            <div class="table-responsive mb-4 mt-4">
+                <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Email</th>
+                        <th>Telephone</th>
+                        <th>Adresse</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let client of clients">
+                        <td><img src="{{ client.photo }}" class="profile"></td>
+                        <td>{{ client.nom }}</td>
+                        <td>{{ client.prenom }}</td>
+                        <td>{{ client.email }}</td>
+                        <td>{{ client.telephone }}</td>
+                        <td>{{ client.adresse }}</td>
+                        <td><a (click)="supp(client.uid)" class="btn btn-danger">Supprimer</a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+
+</div>

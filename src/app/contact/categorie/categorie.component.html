@@ -1,0 +1,69 @@
+<link href="../../assets/assets/css/scrollspyNav.css" rel="stylesheet" type="text/css" />
+<div class="row layout-top-spacing" id="cancel-row">
+                
+    <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+        <div class="widget-content widget-content-area br-6">
+            <div class="table-responsive mb-4 mt-4">
+                <form  [formGroup]="categorieForm" (ngSubmit)="onSubmit()">
+                    <div class="form-row">
+                        <div class="col-md-4 mb-4">
+                            <label for="validationCustom01">Nom</label>
+                            <input type="text" class="form-control" formControlName="nom" placeholder="nom" required>
+                            <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                              <div *ngIf="f.nom.errors.required">nom is required</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <label for="validationCustom02">Description</label>
+                            <textarea formControlName="description" class="form-control" id="" cols="30" rows="2"></textarea>
+                            
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <br>
+                            <button class="btn btn-primary mt-3" type="submit" >Ajouter</button>
+                        </div>
+                    </div>
+                    
+                </form>
+                <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+                    <thead>
+                      <tr>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let categorie of categories">
+                        <td>{{ categorie.nom }}</td>
+                        <td>{{ categorie.description }}</td>
+                        <td>
+                            <a (click)="supp(categorie)" class="btn btn-success">Modifier</a>
+                            <a (click)="supp(categorie.uid)" class="btn btn-danger">Supprimer</a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+    window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+}, false);
+</script>
+<script src="../../assets/assets/js/scrollspyNav.js"></script>
+<script src="../../assets/assets/js/forms/bootstrap_validation/bs_validation_script.js"></script>

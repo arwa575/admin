@@ -1,0 +1,34 @@
+<div class="row layout-top-spacing" id="cancel-row">
+                
+    <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+        <div class="widget-content widget-content-area br-6">
+            <div class="table-responsive mb-4 mt-4">
+                <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Email</th>
+                        <th>Telephone</th>
+                        <th>Adresse</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let vendeur of vendeurs">
+                        <td><img src="{{ vendeur.photo }}" class="profile"></td>
+                        <td>{{ vendeur.nom }}</td>
+                        <td>{{ vendeur.prenom }}</td>
+                        <td>{{ vendeur.email }}</td>
+                        <td>{{ vendeur.telephone }}</td>
+                        <td>{{ vendeur.adresse }}</td>
+                        <td><a (click)="supp(vendeur.uid)" class="btn btn-danger">Supprimer</a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+
+</div>
